@@ -67,7 +67,7 @@ function matchCards(img1, img2) {
     if(img1 === img2) {
         matchedCard++;
 
-        if(matchedCard == 1) {
+        if(matchedCard == 6) {
             setTimeout(function() {
                 alert("Congrats, " + userInput + " You finished in " + timeLeft + " seconds and " + flips + " flips! 🎉 but you still need to read a history book");
             }, 500);
@@ -77,7 +77,7 @@ function matchCards(img1, img2) {
             setTopScore();
         }
 
-        if(matchedCard == 1 && timeLeft > 0) {
+        if(matchedCard == 6 && timeLeft > 0) {
             return clearInterval(timer);
         }
 
