@@ -202,3 +202,9 @@ h1 {
     background: #6563ff;
   }
 }
+
+@media screen and (min-width: 375px) {
+    h1 {
+        font-size:30px;
+    }
+}
