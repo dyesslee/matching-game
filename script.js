@@ -10,6 +10,7 @@ let matchedCard = 0;
 let disableDeck = false;
 let isPlaying = false;
 let cardOne, cardTwo, timer;
+let topScore = 1000;
 
 function initTimer() {
     if(timeLeft >= 10000000) {
@@ -66,16 +67,17 @@ function matchCards(img1, img2) {
     if(img1 === img2) {
         matchedCard++;
 
-        if(matchedCard == 6) {
+        if(matchedCard == 1) {
             setTimeout(function() {
-                alert("GG! You finished in " + timeLeft + " seconds and " + flips + " flips! 🎉 but you still need to read a history book");
+                alert("Congrats, " + userInput + " You finished in " + timeLeft + " seconds and " + flips + " flips! 🎉 but you still need to read a history book");
             }, 500);
             victorySound.play().catch((error) => {
                 console.warn('Sound failed to play:', error)
             });
+            setTopScore();
         }
 
-        if(matchedCard == 6 && timeLeft > 0) {
+        if(matchedCard == 1 && timeLeft > 0) {
             return clearInterval(timer);
         }
 
@@ -139,20 +141,47 @@ cards.forEach(card => {
 });
 
 
-
 function name() {
     userInput = prompt("What's your name?");
     if (userInput === null) {
         userInput = "BinkyLvr56";
-    }
+    } else if (!userInput) {
+            userInput = "dont_press_ok123";
+        }
+    
     document.getElementById("userName").innerHTML = userInput;
-    alert("Have a good day, " + userInput +"!");
+    alert("Hope you enjoy the game, " + userInput +"!");
 } 
 
 
 setTimeout(function() {
     window.onLoad = name();
 }, 500);
+
+
+// Top score
+function setTopScore() {
+    if (timeLeft <= topScore) {
+        topScore = timeLeft;
+    }
+    document.getElementById("topScore").innerHTML = topScore;
+    setTimeout(function() {
+        
+    }, 1000);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
