@@ -137,3 +137,22 @@ refreshBtn.addEventListener("click", shuffleCard);
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
 });
+
+
+
+function name() {
+    userInput = prompt("What's your name?");
+    if (userInput === null) {
+        userInput = "BinkyLvr56";
+    }
+    document.getElementById("userName").innerHTML = userInput;
+    alert("Have a good day, " + userInput +"!");
+} 
+
+
+setTimeout(function() {
+    window.onLoad = name();
+}, 500);
+
+
+
