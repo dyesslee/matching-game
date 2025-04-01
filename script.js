@@ -12,6 +12,39 @@ let isPlaying = false;
 let cardOne, cardTwo, timer;
 let topScore = 1000;
 
+const randNames = [
+  "SirLaughsALot",
+  "404NotFoundYou",
+  "ChewbaccaSnacc",
+  "PickleOverlord",
+  "TacoNinja42",
+  "SoggyNacho",
+  "DramaLlamaDingDong",
+  "UnicornOnDuty",
+  "CtrlAltDelicious",
+  "KeyboardWarrior69",
+  "SpaghettiYeti",
+  "CaptainCrunchWrap",
+  "MemeQueenBee",
+  "NotYourAverageJoe",
+  "TofuTornado",
+  "BurritoBandito",
+  "QuackAttackJack",
+  "SirSnortsALot",
+  "PajamaPanda",
+  "MooseOnTheLoose",
+  "PenguinInDisguise",
+  "NachoMama",
+  "ChickNuggetWizard",
+  "GiggleGoblin",
+  "FunkyMonkey77",
+  "WaffleOverlord",
+  "NoChillPickle",
+  "BananaPhoneBuzz",
+  "CerealKiller007",
+  "DonutDisturber"
+];
+
 function initTimer() {
     if(timeLeft >= 10000000) {
         return clearInterval(timer);
@@ -54,7 +87,7 @@ document.addEventListener('keydown', function(event) {
         }, 360);
     }
 
-    if (event.code === 'Spacebar' || event.key === ' ') {
+    if (event.code === 'spacebar' || event.key === ' ') {
         event.preventDefault();
         jump();
     }
@@ -140,13 +173,15 @@ cards.forEach(card => {
     card.addEventListener("click", flipCard);
 });
 
+let randomName = randNames[Math.floor(Math.random() * randNames.length)];
+console.log("Your new username:", randomName);
 
 function name() {
     userInput = prompt("What's your name?");
     if (userInput === null) {
-        userInput = "BinkyLvr56";
+        userInput = randomName;
     } else if (!userInput) {
-            userInput = "dont_press_ok123";
+            userInput = randomName;
         }
     
     document.getElementById("userName").innerHTML = userInput;
@@ -170,9 +205,22 @@ function setTopScore() {
     }, 1000);
 }
 
+const mainArea = document.getElementById('mainArea');
 
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'e') {
+    rainbow();
+    }
 
+    function rainbow() {
+        if (mainArea.classList.contains('rainbow')) {
+            mainArea.classList.remove('rainbow');
+        } else {
+            mainArea.classList.add('rainbow')
+        }
+    };
+});
 
 
 
